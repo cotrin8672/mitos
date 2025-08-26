@@ -1,0 +1,92 @@
+# deny.toml - cargo-deny configuration
+# https://github.com/EmbarkStudios/cargo-deny
+
+# Overall settings
+[graph]
+targets = [
+    # Windows
+    { triple = "x86_64-pc-windows-msvc" },
+    # Linux
+    { triple = "x86_64-unknown-linux-gnu" },
+    # macOS
+    { triple = "x86_64-apple-darwin" },
+    { triple = "aarch64-apple-darwin" },
+]
+all-features = true
+no-default-features = false
+
+# Bans check
+[bans]
+multiple-versions = "warn"
+wildcards = "allow"
+highlight = "all"
+workspace-default-features = "allow"
+external-default-features = "allow"
+
+# Skip duplicate dependency checks for these crates
+skip = [
+    # Common crates with multiple versions that are acceptable
+    # { name = "windows-sys" },
+]
+
+# Deny specific crates
+deny = [
+    # Deprecated or insecure crates
+    { name = "openssl" },  # Prefer native-tls or rustls
+]
+
+# Licenses check
+[licenses]
+version = 2
+confidence-threshold = 0.8
+allow = [
+    "MIT",
+    "MIT-0",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Unicode-DFS-2016",
+    "CC0-1.0",
+    "MPL-2.0",
+    "Zlib",
+    "0BSD",
+    "BSL-1.0",
+]
+
+deny = [
+    "GPL-2.0",
+    "GPL-3.0",
+    "AGPL-3.0",
+    "LGPL-3.0",
+]
+
+copyleft = "warn"
+allow-osi-fsf-free = "neither"
+default = "deny"
+private = { ignore = true }
+
+# Advisories check
+[advisories]
+version = 2
+db-path = "~/.cargo/advisory-db"
+db-urls = ["https://github.com/rustsec/advisory-db"]
+
+yanked = "deny"
+
+# Ignore advisories for crates that will be updated
+ignore = [
+    # Example: "RUSTSEC-2020-0001",
+]
+
+# Sources check
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+
+# Allow git dependencies from specific organizations  
+allow-git = [
+    # Example: "https://github.com/myorg/myrepo",
+]

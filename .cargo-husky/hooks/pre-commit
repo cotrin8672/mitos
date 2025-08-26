@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+echo "🔧 Running cargo fmt..."
+cargo fmt --all
+
+echo "📋 Running cargo clippy with auto-fix..."
+cargo clippy --fix --allow-dirty --allow-staged --all-targets --all-features -- -D warnings
+
+echo "✅ Running cargo test..."
+cargo test --all
+
+echo "✨ All checks passed! Ready to commit."

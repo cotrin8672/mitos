@@ -4,21 +4,22 @@
       "Bash(git add:*)",
       "__mcp__serena",
       "__mcp__claude_context",
-      "__mcp__context7"
+      "__mcp__context7",
+      "Bash(git commit:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
-  "disableAllHooks": true,
-  "statusLine": {
-    "type": "command",
-    "command": "bun x ccusage statusline"
-  },
-  "outputStyle": "Learning",
   "enabledMcpjsonServers": [
     "sequential-thinking",
     "serena",
     "rust-lsp",
     "context7",
     "claude-context"
-  ]
+  ],
+  "disableAllHooks": true,
+  "statusLine": {
+    "type": "command",
+    "command": "bun x ccusage statusline"
+  },
+  "outputStyle": "Learning"
 }
