@@ -24,16 +24,6 @@
       ],
       "env": {}
     },
-    "rust-lsp": {
-      "type": "stdio",
-      "command": "bun",
-      "args": [
-        "x",
-        "@mizchi/lsmcp",
-        "--bin=rust-analyzer"
-      ],
-      "env": {}
-    },
     "context7": {
       "type": "stdio",
       "command": "bun",
