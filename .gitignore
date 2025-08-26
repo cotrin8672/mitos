@@ -1,2 +1,9 @@
 /target
 .env
+
+# Development tools and caches
+.qoder/
+.serena/
+
+# Temporary files
+nul
