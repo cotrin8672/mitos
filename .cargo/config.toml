@@ -1,0 +1,74 @@
+# .cargo/config.toml - Build and test optimizations
+
+[build]
+# Increase parallel compilation units
+jobs = 8
+# Use incremental compilation for faster rebuilds
+incremental = true
+
+[target.x86_64-pc-windows-msvc]
+# Use lld-link for faster linking on Windows
+linker = "lld-link"
+rustflags = [
+    "-C", "link-arg=/DEBUG:NONE",  # Disable debug info in linker for faster builds
+    "-C", "target-cpu=native",      # Optimize for native CPU
+]
+
+[target.x86_64-unknown-linux-gnu]
+# Use mold or lld for faster linking on Linux
+linker = "clang"
+rustflags = [
+    "-C", "link-arg=-fuse-ld=lld",
+    "-C", "target-cpu=native",
+]
+
+[target.x86_64-apple-darwin]
+rustflags = [
+    "-C", "target-cpu=native",
+    "-C", "split-debuginfo=unpacked",  # Faster debug builds on macOS
+]
+
+[target.aarch64-apple-darwin]
+rustflags = [
+    "-C", "target-cpu=native", 
+    "-C", "split-debuginfo=unpacked",
+]
+
+# Profile optimizations
+[profile.dev]
+# Faster compilation at the cost of runtime performance
+opt-level = 0
+debug = 1
+incremental = true
+overflow-checks = true
+
+[profile.test]
+# Optimize tests for faster execution
+opt-level = 2
+debug = false
+incremental = true
+
+[profile.bench]
+# Maximum optimization for benchmarks
+opt-level = 3
+lto = true
+codegen-units = 1
+
+[profile.release]
+# Balanced release build
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+panic = "abort"
+
+# Cargo-nextest configuration
+[alias]
+t = "nextest run"
+ta = "nextest run --all"
+tr = "nextest run --release"
+
+# Environment variables for consistent behavior
+[env]
+CARGO_TERM_COLOR = "always"
+RUST_BACKTRACE = "1"
