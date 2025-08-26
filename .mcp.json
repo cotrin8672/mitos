@@ -57,10 +57,11 @@
     },
     "docs-rs": {
       "type": "stdio",
-      "command": "npx",
+      "command": "bun",
       "args": [
+        "x",
         "-y",
-        "@nuskey8/docs-rc-mcp"
+        "@nuskey8/docs-rs-mcp"
       ],
       "env": {}
     }
