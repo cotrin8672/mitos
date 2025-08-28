@@ -14,7 +14,8 @@
       "args": [
         "--from",
         "git+https://github.com/oraios/serena",
-        "serena-mcp-server",
+        "serena",
+        "start-mcp-server",
         "--context",
         "ide-assistant",
         "--enable-web-dashboard",
@@ -42,7 +43,7 @@
       ],
       "env": {
         "OPENAI_API_KEY": "${OPENAI_API_KEY}",
-        "MILVUS_TOKEN": "4b524b55a9b425b040d9337ae17c0c8cd7acfa6965d1c58b00ef59da89100a34c0e7717977b69f829f9fe5aeeabd85b3c8dfacaf"
+        "MILVUS_TOKEN": "${MILVUS_TOKEN}"
       }
     },
     "docs-rs": {
