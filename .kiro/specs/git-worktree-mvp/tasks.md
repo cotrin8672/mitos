@@ -2,19 +2,19 @@
 
 ## Phase 1: 基礎構築とHello World
 
-- [ ] 1.1 Cargo プロジェクトの作成
+- [x] 1.1 Cargo プロジェクトの作成
   - `cargo new mitos`でプロジェクト作成
   - Cargo.tomlに最小限の依存（clap, thiserror）を追加
   - `cargo run`で動作確認
   - _Requirements: プロジェクト基盤_
 
-- [ ] 1.2 最初のCLIコマンド実装
+- [x] 1.2 最初のCLIコマンド実装
   - src/main.rsでclapを使った`mitos --version`実装
   - printlnデバッグで引数を表示
   - `cargo run -- --help`でヘルプ表示確認
   - _Requirements: 要件4.5_
 
-- [ ] 1.3 エラー型の基礎実装
+- [x] 1.3 エラー型の基礎実装
   - src/error.rsファイル作成
   - thiserrorで最小限のMitosError enum定義
   - main.rsからエラー型を使用してみる
@@ -22,19 +22,19 @@
 
 ## Phase 2: Git操作の基礎
 
-- [ ] 2.1 git2クレートの導入と実験
+- [x] 2.1 git2クレートの導入と実験
   - Cargo.tomlにgit2を追加
   - main.rsで現在のリポジトリを開く実験コード
   - printlnでリポジトリパスを表示
   - _Requirements: Git操作の学習_
 
-- [ ] 2.2 worktree一覧表示の実装
+- [x] 2.2 worktree一覧表示の実装
   - src/git/mod.rsとworktree.rs作成
   - list_worktrees()関数の実装（シンプル版）
   - main.rsから呼び出してprintlnで表示
   - _Requirements: 要件1.1_
 
-- [ ] 2.3 CLIサブコマンド`mitos list`の実装
+- [x] 2.3 CLIサブコマンド`mitos list`の実装
   - clapでlistサブコマンド追加
   - Git関数を呼び出して整形表示
   - エラーハンドリングの追加
@@ -42,19 +42,19 @@
 
 ## Phase 3: Git worktree操作の完成
 
-- [ ] 3.1 worktree作成機能の実装
+- [x] 3.1 worktree作成機能の実装
   - create_worktree()関数の実装
   - エラーケース（既存パス）の処理
   - デバッグ用のprintln追加
   - _Requirements: 要件1.2, 1.3_
 
-- [ ] 3.2 worktree削除機能の実装
+- [x] 3.2 worktree削除機能の実装
   - remove_worktree()関数の実装  
   - 確認プロンプトの追加
   - ロック状態のチェック
   - _Requirements: 要件1.4, 1.5, 1.6_
 
-- [ ] 3.3 CLIサブコマンドの統合
+- [x] 3.3 CLIサブコマンドの統合
   - `mitos create <branch>`実装
   - `mitos remove <path>`実装
   - 全コマンドの動作確認
